@@ -1,0 +1,1544 @@
+You are an expert researcher analyzing failure modes of LLMs in public procurement
+corruption / integrity risk assessment.
+
+Below are cases where the LLM's assigned risk label DOES NOT MATCH the structured
+OECD-aligned rule-based model.
+
+For each case, you are given:
+- The rule-based risk level
+- The LLM-predicted label
+- The LLM explanation
+- The full rule-based score decomposition:
+  * integrity_risk
+  * process_risk
+  * financial_risk
+  * delivery_risk
+  * underlying raw signals (bids, fund usage, cancellations, etc.)
+  * final risk_score
+
+Your tasks:
+
+1. Identify recurring LLM reasoning failures:
+   - Overweighting certain signals
+   - Underweighting key risk indicators
+   - Misinterpreting competitive structure
+   - Overreacting to fund_usage
+   - Ignoring cancellation history
+   - Poor multi-factor aggregation
+   - Upward/Downward bias
+   - Contradictory logic
+
+2. Group the cases into named failure modes:
+   - Give each mode a short descriptive name
+   - Explain the reasoning flaw
+   - Show 1–2 representative examples
+   - Explain why the rule-based OECD model disagrees
+
+3. Finish with a summary:
+   - Systemic weaknesses of LLMs in public procurement risk reasoning
+   - Risks of relying on LLMs for integrity screening
+   - Why rule-based OECD scoring is more policy-grounded and reliable
+
+Here are the mismatched cases:
+
+
+
+---
+case_id: 62
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.19365130247441834
+    integrity_risk: 0.0
+    process_risk: 0.26949152542372884
+    financial_risk: 0.4765104106635569
+    delivery_risk: 0.119047619047619
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.593655292115558
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.119047619047619
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows signs of competitive bidding, with 15 submitted bids and 6 qualified, which is positive. However, the winning supplier's extensive contract history and a relatively high historical cancellation rate of 0.12 suggest potential over-reliance on a single supplier. The absence of single-bid procedures mitigates risk, yet the volume of contracts awarded to this supplier warrants further scrutiny.
+
+---
+case_id: 67
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.19097328314262094
+    integrity_risk: 0.00506329113924048
+    process_risk: 0.22372881355932203
+    financial_risk: 0.5111666666666667
+    delivery_risk: 0.0759493670886076
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0126582278481012
+        num_bids_qualified: 15
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6566666666666666
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0759493670886076
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement exhibits a healthy level of competition with 16 bids submitted and 15 qualified. However, the winning supplier's high number of contracts in 2025 and significant total contract value could indicate a concentration of influence. The supplier's low share of wins in single-bid procedures and moderate cancellation rate mitigate some risks, leading to a medium assessment.
+
+---
+case_id: 5
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.2394517926854036
+    integrity_risk: 0.012903225806451599
+    process_risk: 0.2542372881355932
+    financial_risk: 0.4697276371150447
+    delivery_risk: 0.4838709677419355
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.032258064516129
+        num_bids_qualified: 9
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.5813229765728085
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.4838709677419355
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a competitive environment with 26 bids submitted and multiple qualified bids, reducing single-bidder and qualification risks. However, the winning supplier has a high historical cancellation rate of 0.48, which might indicate issues in delivery or contract execution. Although the supplier has a low share of wins in single-bid procedures, the cancellation history necessitates caution, raising the overall risk to medium.
+
+---
+case_id: 75
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.1955649916078807
+    integrity_risk: 0.0
+    process_risk: 0.2542372881355932
+    financial_risk: 0.4692371475953566
+    delivery_risk: 0.1702127659574468
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 9
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.5804311774461028
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1702127659574468
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process appears competitive with 22 bids and no single bidder dominance. However, the winning supplier has secured 47 contracts in 2025, indicating a potentially high level of market influence. Additionally, the supplier's historical cancellation rate is 0.17, which may signal potential integrity issues. These factors contribute to a medium corruption risk rating.
+
+---
+case_id: 35
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.17434567285396924
+    integrity_risk: 0.0
+    process_risk: 0.11694915254237287
+    financial_risk: 0.5233716419266525
+    delivery_risk: 0.0571428571428571
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 36
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6788575307757319
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0571428571428571
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The winning offer was significantly below the limit fund, which suggests competitive pricing. With 38 bids submitted and 36 qualified, there is strong competition. However, the winning supplier has a significant contract win history in 2025, indicating potential market domination, though with no single-bid wins and a low cancellation rate. The balance of factors suggests a medium risk profile.
+
+---
+case_id: 85
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.23550610845777292
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.6500000000000001
+    delivery_risk: 0.0769230769230769
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.9090909090909092
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0769230769230769
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: Although there is a competitive element with five bids submitted and two qualified, the winning supplier has a significant number of contract wins in 2025, indicating potential favoritism. The ratio of the winning offer to the limit fund is relatively high at 0.91. However, there is no indication of single-bid dominance, and the supplier's low historical cancellation rate provides some assurance of performance integrity.
+
+---
+case_id: 99
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.23017464645992594
+    integrity_risk: 0.0
+    process_risk: 0.2593220338983051
+    financial_risk: 0.6037953795379538
+    delivery_risk: 0.1702127659574468
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 8
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8250825082508251
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1702127659574468
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: Despite a substantial number of bids and no single-bid red flags, the winning supplier has a high number of contracts with the authority, raising concerns about preferential treatment. Additionally, the supplier's cancellation rate of 0.17 suggests potential issues with contract fulfillment, further increasing the integrity risk.
+
+---
+case_id: 13
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.2175357983184735
+    integrity_risk: 0.0
+    process_risk: 0.9949152542372881
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 1
+        is_single_qualified_bid: 1.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value being 0.00 and the ratio of winner value to limit fund being 0.00 indicate potential irregularities in the procurement process. Additionally, only one bidder was qualified despite four bids, raising concerns about competitive fairness. The winning supplier having a history of winning seven contracts valued at 0.00 also suggests unusual patterns that could point to high corruption or integrity risks.
+
+---
+case_id: 56
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The procurement process shows significant irregularities with a winning offer value of 0.00, indicating possible procedural deficiencies. No bids were submitted or qualified, suggesting lack of competition. The absence of any historical contract wins or activities by the supplier raises concerns about transparency and integrity in the process.
+
+---
+case_id: 253
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.26949152542372884
+    financial_risk: nan
+    delivery_risk: 0.0173410404624277
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0173410404624277
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The winning offer significantly exceeds the limit fund for the procedure, which suggests a possible oversight or error in the procurement planning. Additionally, the winning supplier's history of 173 contracts in one year raises concerns about market dominance, even though their low cancellation rate and no single-bid wins mitigate some of the risk. Overall, these factors indicate a medium level of integrity risk.
+
+---
+case_id: 24
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.19012734173218107
+    integrity_risk: 0.07567567567567568
+    process_risk: 0.19830508474576272
+    financial_risk: 0.4259989638366959
+    delivery_risk: 0.1081081081081081
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.1891891891891892
+        num_bids_qualified: 20
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.5018162978849016
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1081081081081081
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a medium corruption risk due to several factors. Although there was a competitive bidding environment with 26 bids and no single-bidder issues, the winning supplier has a significant number of contracts, which could suggest preferential treatment or a dominance in the market. Additionally, their historical cancellation rate of 0.11 could indicate potential issues in fulfilling contract obligations.
+
+---
+case_id: 82
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The procurement case shows significant indicators of potential risk. Despite having 8 bids submitted, no bids were qualified, resulting in a winning offer of 0.00, which points to procedural or evaluation irregularities. Additionally, the historical data for the winning supplier indicates no prior contracts or experience, raising questions about the transparency and fairness of the process.
+
+---
+case_id: 14
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.1938883131556522
+    integrity_risk: 0.0
+    process_risk: 0.2593220338983051
+    financial_risk: 0.4813253012048193
+    delivery_risk: 0.125
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 8
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6024096385542169
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.125
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case presents some potential risk factors. The winning supplier has a high number of past wins, which could indicate favoritism or undue influence. However, the ratio of the winning offer to the limit fund and a relatively low historical cancellation rate provide a counterbalance. Additionally, the absence of single-bid procedures reduces suspicion of collusive behavior. These mixed indicators suggest a medium risk level.
+
+---
+case_id: 48
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21864789512515603
+    integrity_risk: 0.0
+    process_risk: 0.2796610169491525
+    financial_risk: 0.6311838316180035
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 4
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8748796938509155
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a healthy level of competition, with 20 bids submitted and no indication of a single bidder dominating the process. However, the supplier has won a significant amount of contracts in a single year, which could indicate favoritism or lack of diversity in awarded contracts. While there is no history of cancellations or single-bid wins, the high volume of contracts from the same supplier warrants closer scrutiny.
+
+---
+case_id: 216
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.26440677966101694
+    financial_risk: nan
+    delivery_risk: 0.035820895522388
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.035820895522388
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process had multiple bidders, all of whom were qualified, indicating a competitive process. However, the lack of a specified limit fund raises concerns about budgetary transparency. Additionally, the winning supplier's high number of contract wins in a single year suggests a dominant market position, which could indicate potential favoritism or reduced competitiveness in the long term.
+
+---
+case_id: 219
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.26949152542372884
+    financial_risk: nan
+    delivery_risk: 0.0294985250737463
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0294985250737463
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case involves a high number of contracts won by a single supplier, which raises concerns about preferential treatment or lack of competitive bidding. However, the supplier's low cancellation rate and share of wins in single-bid procedures suggest a relatively stable and fair procurement environment. The notable discrepancy between the limit fund and the winning offer value further elevates the risk level.
+
+---
+case_id: 265
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2593220338983051
+    financial_risk: nan
+    delivery_risk: 0.035820895522388
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 8
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.035820895522388
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: While there is a relatively high volume and value of contracts awarded to the supplier, no single-bid procedures are indicated, suggesting healthy competition. However, the limit fund set to 0.00 raises concerns about potential process irregularities or misreporting in fund allocation. The historical cancellation rate of 0.04 is low, reducing risk slightly, but the unusual fund reporting necessitates caution.
+
+---
+case_id: 0
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21069987217662492
+    integrity_risk: 0.0
+    process_risk: 0.188135593220339
+    financial_risk: 0.6052127659574469
+    delivery_risk: 0.1111111111111111
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 22
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8276595744680851
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1111111111111111
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a healthy level of competition with 41 bids and no indication of single-bid dominance. However, the winning supplier's dominance in 2025 with 18 contract wins and a moderate historical cancellation rate of 0.11 introduce a potential risk of favoritism or dependency. The ratio of the winning bid to the limit fund being 0.83 also suggests a fair but not excessive discount.
+
+---
+case_id: 211
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: 0.5855811885074197
+    integrity_risk: 0.6375
+    process_risk: 0.9949152542372881
+    financial_risk: 0.47450000000000003
+    delivery_risk: 0.03125
+
+    raw_signals:
+        is_single_bidder: 1.0
+        company_single_bid_win_rate: 0.09375
+        num_bids_qualified: 1
+        is_single_qualified_bid: 1.0
+        fund_usage: 0.59
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.03125
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process involved a single bidder, which can be a risk factor for reduced competition. However, the winning offer was significantly below the limit fund, indicating potential cost-effectiveness. Also, the supplier has a low historical cancellation rate and a relatively low share of wins in single-bid procedures, which might mitigate some concerns.
+
+---
+case_id: 248
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2796610169491525
+    financial_risk: nan
+    delivery_risk: 0.0383747178329571
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 4
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0383747178329571
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The significant deviation between the winning offer value and the limit fund indicates potential misalignment in budget estimation or irregularity in fund allocation. Additionally, the high number of contracts won by the supplier in 2025 suggests potential favoritism, although their low cancellation rate mitigates some risk. Overall, these factors contribute to a medium level of corruption/integrity risk.
+
+---
+case_id: 86
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.11809518067826764
+    integrity_risk: 0.0
+    process_risk: 0.26440677966101694
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value is reported as 0.00, which is highly irregular and suggests potential data entry errors or issues with transparency. Despite eight bids being submitted, the complete lack of a winning value makes the outcome suspicious. Additionally, the supplier appears to lack a track record, indicated by zero contracts won in the reference year, further heightening integrity concerns.
+
+---
+case_id: 64
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21556786205911413
+    integrity_risk: 0.00701754385964912
+    process_risk: 0.24915254237288134
+    financial_risk: 0.6137111111111112
+    delivery_risk: 0.0350877192982456
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0175438596491228
+        num_bids_qualified: 10
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8431111111111111
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0350877192982456
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows competitive behavior with 18 bids and no single bidder flags, suggesting a fair process. However, the winning supplier's extensive success with 57 contracts could indicate a potential concentration risk. Additionally, the supplier's low share of wins in single-bid procedures and historical cancellation rate are reassuring but the reduced number of qualified bids may indicate barriers to entry.
+
+---
+case_id: 43
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.20059803959071407
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.5517391304347826
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.7304347826086957
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process appears transparent with competitive bidding, evidenced by 13 submitted bids and 2 qualified bids. However, the winning supplier has a high volume of wins in 2025, raising potential concerns about favoritism or undue influence. The procurement being under the limit fund is positive, but the supplier's successful streak warrants closer monitoring to ensure no undue advantage is being exercised.
+
+---
+case_id: 96
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.24091649501180973
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.6121848739495799
+    delivery_risk: 0.1923076923076923
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8403361344537815
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1923076923076923
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case shows a competitive bidding process, indicated by 17 bids submitted and multiple bids qualified. However, the winning supplier has a significant number of contract wins in the year, which could suggest preferential treatment or over-reliance on this supplier. Additionally, the supplier's historical cancellation rate of 0.19 raises some concerns about performance reliability.
+
+---
+case_id: 58
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21465822802553447
+    integrity_risk: 0.02666666666666664
+    process_risk: 0.26440677966101694
+    financial_risk: 0.59456978570109
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0666666666666666
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.808308701274709
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case shows signs of competitive bidding with no single bidder issues and all bids being qualified, which points to a relatively transparent process. However, the high volume of contracts won by the supplier in 2025 and the large total value might indicate a dominance in the market, raising potential concerns about competition. The supplier's low single-bid win rate and zero cancellation rate mitigate some risk, but the overall circumstances suggest a medium level of concern regarding potential integrity risks.
+
+---
+case_id: 15
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.19648755859434996
+    integrity_risk: 0.0
+    process_risk: 0.2440677966101695
+    financial_risk: 0.5271469778418776
+    delivery_risk: 0.0757575757575757
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 11
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6857217778943228
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0757575757575757
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement shows a competitive bidding process with 28 bids submitted and no single-bidder flags, suggesting a healthy competition. However, the winning supplier's significant number of contracts won and relatively high historical contract value may indicate a potential aggregation of power, which could introduce risk. The supplier's low cancellation rate suggests reliability, mitigating some risk concerns.
+
+---
+case_id: 18
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The procurement case presents a high corruption risk due to several concerning factors: the winning offer value is 0.00, no bids were submitted, and no qualified bidders participated. Additionally, the winning supplier does not have a history of winning contracts in the year considered. These anomalies suggest a potential lack of transparency and competitiveness, which can indicate underlying integrity issues in the procurement process.
+
+---
+case_id: 285
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: nan
+    delivery_risk: 0.0294985250737463
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0294985250737463
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The case exhibits several potential indicators of risk. The limit fund for this procedure is listed as 0.00, which is unusual and can point towards a lack of transparency in financial expectations. Additionally, the supplier has won a significant number of contracts within the year, suggesting possible favoritism, although their share of wins in single-bid procedures remains low. The historical cancellation rate is also minimally concerning at 3%, indicating some procedural issues but not decisively high.
+
+---
+case_id: 114
+
+RULE-BASED OUTPUT:
+    rule_level: Medium
+    risk_score: 0.2839402061842902
+    integrity_risk: 0.6
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 1.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The procurement process shows significant risks: the winning offer value is zero, which is highly unusual and suggests possible non-compliance or errors. Furthermore, only one bid was submitted and unqualified, indicating a lack of competition. These factors strongly suggest potential corruption or serious procedural issues.
+
+---
+case_id: 232
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2745762711864407
+    financial_risk: nan
+    delivery_risk: 0.0943396226415094
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 5
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0943396226415094
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: There are potential integrity concerns due to the absence of a documented limit fund and a winning offer value significantly above zero. However, all five bids were qualified, and there is no indication of a single bidder scenario. The frequent winning of the supplier could suggest a competitive edge but might also hint at preferential treatment. The supplier's low share of wins in single-bid procedures and moderate historical cancellation rate contribute to a medium risk label.
+
+---
+case_id: 33
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.19126007760553515
+    integrity_risk: 0.0125
+    process_risk: 0.26440677966101694
+    financial_risk: 0.4833333333333334
+    delivery_risk: 0.0625
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.03125
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6060606060606061
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0625
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a reasonably competitive environment with 12 bids and no single bidder dominance. However, the winning supplier's high number of recent contracts could suggest preferential treatment, though their low share in single-bid wins and a moderate cancellation rate provide some mitigation. The significant discount from the limit fund indicates possible efficiency but could also be a sign of underbidding to secure contracts.
+
+---
+case_id: 126
+
+RULE-BASED OUTPUT:
+    rule_level: Medium
+    risk_score: 0.282907521745317
+    integrity_risk: 0.2
+    process_risk: 0.9949152542372881
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.5
+        num_bids_qualified: 1
+        is_single_qualified_bid: 1.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The substantial discrepancy between the limit fund and the winning offer value of 0.00 indicates a potential manipulation or error in reporting. Additionally, the fact that the supplier has won multiple contracts at zero value and has a significant history of wins in single-bid procedures with no cancellations suggests a possible pattern of non-competitive or collusive behavior, raising the integrity risk of this procurement to high.
+
+---
+case_id: 30
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.22073433057072372
+    integrity_risk: 0.0
+    process_risk: 0.188135593220339
+    financial_risk: 0.6057202282455012
+    delivery_risk: 0.1891891891891892
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 22
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8285822331736385
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1891891891891892
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process shows a competitive environment with 38 bids and no indication of single bidding, suggesting transparency. However, the winning supplier's history of winning 74 contracts in a year and a historical cancellation rate of 0.19 introduces concerns about possible reliability or over-reliance on one supplier. These factors together point to a medium risk.
+
+---
+case_id: 225
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: 0.4304329996304603
+    integrity_risk: 0.1
+    process_risk: 0.9949152542372881
+    financial_risk: 0.7000000000000001
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.25
+        num_bids_qualified: 1
+        is_single_qualified_bid: 1.0
+        fund_usage: 1.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The contracting process used an open procedure with competitive bidding, which generally supports transparency and fairness. However, the winning bid matched the limit fund exactly, which can indicate potential tailoring or insider knowledge. Additionally, there was only one qualified bid out of two submitted, which raises concerns about limited competition. Given these factors, the overall risk is assessed as medium.
+
+---
+case_id: 76
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.20725061275988094
+    integrity_risk: 0.0
+    process_risk: 0.16779661016949154
+    financial_risk: 0.49375
+    delivery_risk: 0.3333333333333333
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 26
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.625
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.3333333333333333
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: There is a relatively low ratio of the winning value to the limit fund, suggesting competitive pricing. With 32 bids received and 26 qualified, competition appears robust. However, the winning supplier has a significant contract win history, indicating potential favoritism or influence, especially given their high cancellation rate of 0.33. These factors suggest a medium risk of integrity issues.
+
+---
+case_id: 268
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.26949152542372884
+    financial_risk: nan
+    delivery_risk: 0.035820895522388
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.035820895522388
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process involved a competitive bidding with 6 qualified bids and no single bidder dominance, which is a positive aspect. However, the limit fund for the procedure is set at 0.00, creating an unclear budgetary framework. Additionally, the winning supplier's large volume of contract wins raises concerns about potential supplier favoritism or an excessively dominant market position.
+
+---
+case_id: 42
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.221129851607831
+    integrity_risk: 0.0
+    process_risk: 0.2745762711864407
+    financial_risk: 0.5442196531791907
+    delivery_risk: 0.2
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 5
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.7167630057803468
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.2
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement appears competitive, with 14 bids and no single bidder or single qualified bidder issues. The winning bid's value is well below the limit fund, indicating cost-effectiveness. However, the winning supplier's high volume of contract wins in 2025 raises concerns of market dominance. Additionally, the historical cancellation rate of 20% suggests potential issues with contract performance.
+
+---
+case_id: 73
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.17913580159474335
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.4323215385668332
+    delivery_risk: 0.0526315789473684
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.5133118883033331
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0526315789473684
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case has several positive indicators, such as multiple bids and no single bidder dependency, which lower the risk. However, the winning supplier's extensive history of winning contracts raises concerns about potential favoritism. The low ratio of winner value to limit fund suggests competitive pricing, but the supplier's dominance in the market requires attention to ensure fairness.
+
+---
+case_id: 298
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2745762711864407
+    financial_risk: nan
+    delivery_risk: 0.0294985250737463
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 5
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0294985250737463
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The risk is elevated due to the limit fund for the procedure being set to 0.00, which heavily skews the winner_value/limit_fund ratio. However, transparency is enhanced by a competitive process with five qualified bids. The winning supplier is experienced with a low cancellation rate, but their high volume of past contracts could suggest favoritism.
+
+---
+case_id: 11
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.11915844039272845
+    integrity_risk: 0.0
+    process_risk: 0.2745762711864407
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 5
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value is reported as 0.00, which is unusually low and indicates potential procedural errors or fraudulent reporting. Despite 12 bids being submitted, no monetary offer was documented as winning. Additionally, the winning supplier has won multiple contracts without any recorded monetary value. These anomalies suggest a high risk of corruption or integrity issues in the procurement process.
+
+---
+case_id: 45
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12076884499482413
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value being 0.00 is highly unusual and may indicate a data entry error or an attempt to manipulate the procurement process. Despite multiple bids, the absence of a winning offer value raises concerns about transparency and the integrity of the process. Additionally, the complete lack of historical data on the winning supplier's past contracts or wins suggests potential red flags in their reliability or capability.
+
+---
+case_id: 34
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.20386226476767771
+    integrity_risk: 0.0
+    process_risk: 0.24915254237288134
+    financial_risk: 0.559013230429989
+    delivery_risk: 0.0666666666666666
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 10
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.7436604189636163
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0666666666666666
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case shows a healthy level of competition with 24 bids and no signs of single bidder occurrences. However, the winning supplier's dominance in previous contracts, having won 30 contracts in a single year, suggests potential over-reliance on one supplier, which can indicate a risk. While the ratio of winner value to limit fund is reasonable and the historical cancellation rate is low, the high number of prior wins by the supplier calls for further scrutiny.
+
+---
+case_id: 95
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.20245560835127233
+    integrity_risk: 0.0
+    process_risk: 0.26440677966101694
+    financial_risk: 0.5163842454774444
+    delivery_risk: 0.12
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.6661531735953535
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.12
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement procedure appears competitive with 17 total bids and no single bidder flags, which suggests a fair level of competition. However, the winning supplier's frequent contract awards in 2025 and a relatively high historical cancellation rate of 0.12 raise concerns about past performance and potential favoritism, elevating the overall risk to Medium.
+
+---
+case_id: 39
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.2215334587163895
+    integrity_risk: 0.006779661016949121
+    process_risk: 0.26949152542372884
+    financial_risk: 0.564989939637827
+    delivery_risk: 0.1525423728813559
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0169491525423728
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.7545271629778671
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.1525423728813559
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The presence of multiple bids and the fact that six were qualified indicates a competitive process, which is positive. However, the winning supplier's dominance in the market, having won 59 contracts in a single year, suggests potential undue influence or dependency. Additionally, a historical cancellation rate of 0.15 might indicate some performance issues, elevating the risk to medium.
+
+---
+case_id: 234
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.26440677966101694
+    financial_risk: nan
+    delivery_risk: 0.0943396226415094
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 7
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0943396226415094
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process involved a fair level of competition with 7 bids submitted, indicating a potentially competitive environment. However, the contracting authority's limit fund for the procedure being 0.00, while the winning offer is significantly high, raises questions about financial clarity and budget alignment. Additionally, the winning supplier has a notable contract history, which might suggest familiarity but also poses a risk of favoritism if not properly justified. The supplier’s low cancellation rate suggests reliability, which moderates the overall risk assessment.
+
+---
+case_id: 196
+
+RULE-BASED OUTPUT:
+    rule_level: Medium
+    risk_score: 0.3431973905754931
+    integrity_risk: 0.0
+    process_risk: 0.2847457627118644
+    financial_risk: 1.0
+    delivery_risk: 0.088235294117647
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 3
+        is_single_qualified_bid: 0.0
+        fund_usage: 1.0
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.088235294117647
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value appears significantly higher than the stated limit fund, suggesting possible errors or data misrepresentation. The supplier's frequent wins and high total contract value in a single year could indicate undue favoritism or lack of competition, despite a low share of single-bid wins. These factors collectively elevate the corruption risk profile.
+
+---
+case_id: 6
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The case shows a significant anomaly as there is a winning offer value of 0.00 with no bids submitted or qualified. This suggests a lack of competition or potential manipulation. Such discrepancies in procurement processes, particularly with a complete absence of bids, indicate a high risk of corruption or integrity issues.
+
+---
+case_id: 217
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2847457627118644
+    financial_risk: nan
+    delivery_risk: 0.0383747178329571
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 3
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0383747178329571
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The absence of a limit fund suggests a lack of budgetary control, which can create opportunities for inflated pricing. While three bids were submitted, indicating some level of competition, the winning supplier’s extensive prior success hints at possible favoritism, especially considering the high total value of their past contracts. However, the low cancellation rate mitigates some concerns, suggesting satisfactory performance.
+
+---
+case_id: 93
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21450512939669342
+    integrity_risk: 0.016
+    process_risk: 0.22372881355932203
+    financial_risk: 0.6055272734825181
+    delivery_risk: 0.056
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.04
+        num_bids_qualified: 15
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.828231406331851
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.056
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: Although the procurement process appears competitive with 24 bids and no single bidder dominance, the winning supplier has a significant number of contracts in one year. The supplier's win rate in single-bid scenarios is relatively low, suggesting competitive practices. However, the large volume of contracts combined with a moderate historical cancellation rate may raise concerns about favorability or over-reliance on one supplier.
+
+---
+case_id: 55
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.2413258463702448
+    integrity_risk: 0.044444444444444446
+    process_risk: 0.28983050847457625
+    financial_risk: 0.6421052631578947
+    delivery_risk: 0.0317460317460317
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.1111111111111111
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8947368421052632
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0317460317460317
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement case shows a reasonable ratio between the winning offer and the limit fund (0.89) and has competitive bidding with 2 qualified bids. However, the winning supplier's high volume of contracts (63 in a single year) and substantial total contract value raises potential concerns of market dominance. The supplier’s low share in single-bid procedures and low cancellation rate mitigate some risk, but the overall context suggests a medium risk category.
+
+---
+case_id: 69
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.18748680473640758
+    integrity_risk: 0.0
+    process_risk: 0.26949152542372884
+    financial_risk: 0.4902025000000001
+    delivery_risk: 0.0383747178329571
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 6
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.61855
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0383747178329571
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process appears competitive with six qualified bids, and the winning bid is significantly lower than the limit fund, suggesting fair pricing. However, the winning supplier has an extensive history of contract wins, raising potential concerns about market dominance. Despite no single-bid wins and a low cancellation rate, the frequent success could imply undue influence or preferential treatment.
+
+---
+case_id: 47
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.17075974257392043
+    integrity_risk: 0.00109890109890108
+    process_risk: 0.22881355932203387
+    financial_risk: 0.42500000000000004
+    delivery_risk: 0.0686813186813186
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0027472527472527
+        num_bids_qualified: 14
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.5
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0686813186813186
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement involves a large number of bids (24), promoting competitiveness. The winning offer is significantly lower than the limit fund, indicating a potentially cost-effective selection. However, the winning supplier's large share of contracts (364 in 2025) suggests market dominance, which can pose integrity risks. The supplier's low cancellation rate (0.07) and absence of single-bid dominance are positive indicators, balancing the risk to medium.
+
+---
+case_id: 19
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.16312342282421025
+    integrity_risk: 0.2
+    process_risk: 0.28983050847457625
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.5
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The key concern is the winning offer value being 0.00, which is anomalous and suggests a potential issue in the tendering process. Despite multiple bids being submitted, the absence of a monetary value raises red flags about the legitimacy and transparency of the procurement. This, coupled with the supplier's substantial share of wins in single-bid procedures, suggests a high risk of corruption or integrity issues.
+
+---
+case_id: 87
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.21443404319384227
+    integrity_risk: 0.0
+    process_risk: 0.19322033898305085
+    financial_risk: 0.643680197472079
+    delivery_risk: 0.0571428571428571
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 21
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.8976003590401436
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0571428571428571
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process appears competitive with 25 bids submitted and a winning bid ratio of 0.90 of the limit fund. However, the winning supplier has been awarded a large number of contracts (35) in 2025 alone, which could indicate preferential treatment or concentration risk. Although their historical cancellation rate is low at 0.06, the significant volume of contracts might suggest medium-level integrity risks.
+
+---
+case_id: 46
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The key concern is that the winning offer value is 0.00, suggesting a potential issue with the awarding process or a clerical error. Additionally, none of the bids were qualified, which raises red flags about the competitiveness and fairness of the procurement process. The absence of a successful supplier background further contributes to a perception of heightened risk.
+
+---
+case_id: 280
+
+RULE-BASED OUTPUT:
+    rule_level: High
+    risk_score: nan
+    integrity_risk: 0.0
+    process_risk: 0.2847457627118644
+    financial_risk: nan
+    delivery_risk: 0.05
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 3
+        is_single_qualified_bid: 0.0
+        fund_usage: nan
+        is_over_budget: 1.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.05
+
+LLM OUTPUT:
+    llm_label: Medium
+    llm_explanation: The procurement process involved multiple bids and no single-bidder incidents, which is positive. However, the significant difference between the winning offer value and the limit fund raises concerns about budget transparency. Additionally, the supplier's significant number of contracts won in 2025 suggests a potential over-reliance, which could indicate biases or favoritism, thereby elevating the risk to a Medium level.
+
+---
+case_id: 9
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12185285076961805
+    integrity_risk: 0.0
+    process_risk: 0.3
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 0
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The procurement case shows that no bids were submitted, and the winning offer value is zero, suggesting a potential issue in the tender process. The absence of competition and the fact that the winning supplier has no contract history or previous winning records in 2025 further indicate significant integrity concerns.
+
+---
+case_id: 59
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.1406176423981842
+    integrity_risk: 0.1
+    process_risk: 0.28983050847457625
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.25
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value of 0.00, despite a limit fund of 2471628.00, suggests possible irregularities or errors. The same supplier winning multiple contracts in 2025, all with a winning offer value of 0.00, further raises concerns about potential bid manipulation or collusion. These factors indicate a high risk of integrity issues in this procurement case.
+
+---
+case_id: 98
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12076884499482413
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value and the total value of the supplier's contracts are both reported as 0.00, which is suspicious. This indicates potential issues in reporting or recording financial data, suggesting a high risk of integrity issues. Additionally, there is no fiscal benefit apparent for the supplier, which is unusual and warrants further investigation.
+
+---
+case_id: 92
+
+RULE-BASED OUTPUT:
+    rule_level: Low
+    risk_score: 0.12076884499482413
+    integrity_risk: 0.0
+    process_risk: 0.28983050847457625
+    financial_risk: 0.15
+    delivery_risk: 0.0
+
+    raw_signals:
+        is_single_bidder: 0.0
+        company_single_bid_win_rate: 0.0
+        num_bids_qualified: 2
+        is_single_qualified_bid: 0.0
+        fund_usage: 0.0
+        is_over_budget: 0.0
+        value_changed_flag: 1.0
+        company_cancellation_rate: 0.0
+
+LLM OUTPUT:
+    llm_label: High
+    llm_explanation: The winning offer value is 0.00, which indicates a potential error or manipulation in the reporting or bidding process. Although there were multiple bids and no indication of a single qualified bidder, the zero value for the winning bid suggests possible irregularities or unreported issues. This unusual circumstance raises concerns about transparency and integrity, warranting a high-risk classification.
